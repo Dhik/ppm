@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Absen;
 use App\Biodata;
+use App\Booklet;
 use Auth;
 
 class UserController extends Controller
@@ -44,6 +45,8 @@ class UserController extends Controller
         $result->password = bcrypt($req->password);
         $result->akses = $req->akses;
         $result->kode_mhs = $req->kode_mhs;
+        $result->isi_biodata = "belum";
+        $result->angkatan = $req->angkatan;
 
         $hasil = new Absen;
         $hasil->kode_mhs = $req->kode_mhs;
@@ -53,6 +56,18 @@ class UserController extends Controller
         $hasil->tanggal = NULL ;
 
         if($result->save() && $hasil->save()){
+            if($req->akses == 'operator'){
+                $data = array('id_user' => $req->kode_mhs,
+                            'kode_mhs' => '2018001',
+                            'nama' => 'Ghifa',
+                            'foto' => '12156033565189.jpg');
+                Booklet::insert($data);
+                $data = array('id_user' => $req->kode_mhs,
+                            'kode_mhs' => '2017001',
+                            'nama' => 'Dinda',
+                            'foto' => '12156035373143.jpg');
+                Booklet::insert($data);
+            }
             return redirect()->route('admin.user')->with('result','success'); 
         }else{
             return back()->with('result','fail')->withInput();

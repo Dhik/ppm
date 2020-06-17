@@ -1,91 +1,75 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<h1>User <small class="text-muted"> Tambah</small></h1>
+<hr>
+@if(session('result') == 'fail')
+<div class="alert alert-danger alert-dismissible fade show">
+    <strong>Failed !</strong>Gagal disimpan.
+    <button type="button" class="close" data-dismiss="alert">
+        &times;
+    </button>
+</div>
+@endif
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" action="{{ route('add') }}">
+            {{ csrf_field() }}
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">
+                    <h5>Buat User Baru</h5>
+                </div><!-- end card header -->
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                    <div class="form-group form-label-group">
+                        <label for="iName">Name</label>
+                        <input type="text" name="name" class="form-control {{ $errors->has('name')?'is-invalid':'' }}" value="{{ old('name') }}" id="iName" placeholder="Name" required>
+                        @if($errors->has('name'))
+                        <div style="font-size:10px; color:red;">{{ $errors->first('name') }}</div>
+                        @endif 
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
+                        <label for="iEmail">Email</label>
+                        <input type="email" name="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}" value="{{ old('email') }}" id="iEmail" placeholder="Email" required>
+                        @if($errors->has('email'))
+                        <div style="font-size:10px; color:red;">{{ $errors->first('email') }}</div>
+                        @endif 
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
+                        <label for="iPassword">Password</label>
+                        <input type="password" name="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" value="{{ old('password') }}" id="iPassword" placeholder="Password" required>
+                        @if($errors->has('password'))
+                        <div style="font-size:10px; color:red;">{{ $errors->first('password') }}</div>
+                        @endif 
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
+                        <label for="iRePassword">Re Password</label>
+                        <input type="password" name="repassword" class="form-control {{ $errors->has('repassword')?'is-invalid':'' }}" id="iRePassword" placeholder="Re Password" required>
+                        @if($errors->has('repassword'))
+                        <div style="font-size:10px; color:red;">{{ $errors->first('repassword') }}</div>
+                        @endif 
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
+                        <label for="iKode">Kode Santri</label>
+                        <input type="number" name="kode_mhs" class="form-control {{ $errors->has('kode_mhs')?'is-invalid':'' }}" value="{{ old('kode_mhs') }}" id="iKode" placeholder="kode" required>
+                        @if($errors->has('kode_mhs'))
+                        <div style="font-size:10px; color:red;">{{ $errors->first('kode_mhs') }}</div>
+                        @endif 
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
+                        <input class="form-control" name="akses" type="hidden" value="operator">
+                        <select class="form-control" name="akses">
+                            <option value="">Pilih Akses Sebagai : </option>
+                            <option value="admin">Penerobos</option>
+                            <option value="sp_admin">Super Admin</option>
+                        </select>
+                    </div><!-- end form group -->
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                </div><!-- end card body -->
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="kode" class="col-md-4 col-form-label text-md-right">{{ __('Kode Santri') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="kode_mhs" type="text" class="form-control" name="kode_mhs" value="{{ old('kode_mhs') }}" required autocomplete="kode_mhs">
-
-                                @error('kode_mhs')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                </div><!-- end card footer -->
+            </div><!-- end card -->
+        </form>
     </div>
 </div>
-@endsection

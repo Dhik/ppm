@@ -18,12 +18,13 @@
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="{{ route('admin.home') }}"> <i class="icon-home"></i>Home                             </a></li>
               @if(Auth::user()->akses == 'sp_admin') 
-              <li><a href="{{ route('admin.biodata.alldata') }}"> <i class="icon-bars"></i>Data Santri PPM                             </a></li>
+                <li><a href="{{ route('admin.biodata.alldata') }}"> <i class="icon-bars"></i>Data Santri PPM                             </a></li>
               @elseif(Auth::user()->akses == 'admin')
-              <li><a href="{{ route('admin.user') }}"> <i class="icon-user"></i>Terobosan                             </a></li>
-              <li><a href="{{ route('admin.biodata.alldata') }}"> <i class="icon-bars"></i>Data Santri PPM                             </a></li>
+                <li><a href="{{ route('admin.user') }}"> <i class="icon-user"></i>Terobosan                             </a></li>
+                <li><a href="{{ route('admin.biodata.alldata') }}"> <i class="icon-bars"></i>Data Santri PPM                             </a></li>
               @elseif(Auth::user()->akses == 'operator')
-              <li><a href="{{ route('admin.biodata.alldata') }}"> <i class="icon-bars"></i>Data Santri PPM                             </a></li>
+                <li><a href="{{ route('admin.biodata.alldata') }}"> <i class="icon-bars"></i>Data Santri PPM                             </a></li>
+              <li><a href="{{ route('admin.booklet.list') }}"> <i class="icon-picture"></i>Booklet Metamorph                             </a></li>
               @endif
             <!-- @if(Auth::user()->akses == 'admin' || Auth::user()->akses == 'operator')
                 <li><a href="{{ route('admin.target') }}"> <i class="icon-list-1"></i>Hafalan                             </a></li>

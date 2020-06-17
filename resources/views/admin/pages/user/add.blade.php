@@ -58,6 +58,10 @@
                         @endif 
                     </div><!-- end form group -->
                     <div class="form-group form-label-group">
+                        <label for="iAngkatan">Angkatan</label>
+                        <input type="number" name="angkatan" class="form-control" value="{{ old('angkatan') }}" id="iAngkatan" placeholder="Angkatan" required>
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
                         <?php
                         $val=old('akses');
                         ?>
@@ -66,8 +70,8 @@
                         @elseif(Auth::user()->akses == 'sp_admin')
                         <select class="form-control" name="akses">
                             <option value="" {{ $val==""?'selected':'' }}>Pilih Akses Sebagai : </option>
-                            <option value="admin" {{ $val=="admin"?'selected':'' }}>Penerobos</option>
-                            <option value="sp_admin" {{ $val=="sp_admin"?'selected':'' }}>Super Admin</option>
+                            <option value="admin" {{ $val=="admin"?'selected':'' }}>Santri</option>
+                            <option value="sp_admin" {{ $val=="sp_admin"?'selected':'' }}>Penerobos</option>
                         </select>
                         @endif
                     </div><!-- end form group -->

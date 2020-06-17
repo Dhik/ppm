@@ -56,7 +56,8 @@ Route::get('/bahasa', function () {
 Route::get('/komunikasi', function () {
     return view('profesi/komunikasi');
 });
-
+// Route::get('/add','RegisController@add')->name('add');
+// Route::post('/add','RegisController@save');
 
 // Route::get('/self2','SembakoController@self');
 Route::get('/self','SembakoController@exportExcel');
@@ -109,7 +110,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     });
     /*Booklet*/
     Route::prefix('booklet')->group(function(){
-        Route::get('/booklet','BookletController@list')->name('admin.booklet')->middleware('akses.admin');
+        Route::get('/list','BookletController@list')->name('admin.booklet.list')->middleware('akses.admin');
+        Route::get('/edit/{id}','BookletController@edit')->name('admin.booklet.edit')
+                ->middleware('akses.admin');
+        Route::post('/edit/{id}','BookletController@update')
+                ->middleware('akses.admin');
     });
     /*Absen*/
     Route::group(['prefix'=>'absen','middleware'=>'akses.admin:sp_admin'],function(){
