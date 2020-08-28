@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>@yield('title') PPM &mdash; Nurul Hakim</title>
-    <link rel="icon" type="image/png" href="{{ url('download.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('main/images/download.png') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,7 +17,6 @@
 
     <link rel="stylesheet" href="{{ url('main/css/bootstrap-datepicker.css') }}">
 
-    <link rel="stylesheet" href="{{ url('main/fonts/flaticon/font/flaticon.css') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
 

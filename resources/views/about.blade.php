@@ -1,5 +1,6 @@
 @extends('welcome')
 @section('title','About')
+<link rel="icon" type="image/png" href="{{ url('main/images/download.png') }}">
 <header class="site-navbar py-1" role="banner">
 
 <div class="container">
@@ -36,12 +37,22 @@
           <li><a href="{{ url('/facility') }}" style="padding-right:10px;"> Facility </a></li>
           <!-- <li><a href="booking.html">Book Online</a></li> -->
           @if (Route::has('login'))                
-          @auth
-          <li>
-            <a href="{{ route('admin.user.biodata') }}" style="padding-right:10px;"> Registrasi </a>
-          </li>
-          @endauth
-          @endif
+                @auth
+                <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('admin.user.setting') }}">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endauth
+                @endif
         </ul>
       </nav>
     </div>

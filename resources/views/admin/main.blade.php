@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Montserrat&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title') PPM Nurul Hakim</title>
     <link rel="icon" type="image/png" href="{{ url('download.png') }}">
@@ -22,7 +23,7 @@
     <!-- Custom Scrollbar-->
     <link rel="stylesheet" href="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{ url('theme-sbadmin/css/style.css') }}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{ url('theme-sbadmin/css/style.sea.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ url('theme-sbadmin/css/custom.css') }}">
     <!-- Favicon-->

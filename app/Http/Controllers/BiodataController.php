@@ -7,6 +7,7 @@ use App\User;
 use App\Absen;
 use App\Biodata;
 use Auth;
+use DB;
 
 class BiodataController extends Controller
 {
@@ -90,7 +91,7 @@ class BiodataController extends Controller
     }
     public function all_data(Request $req){
         if(Auth::user()->akses != 'sp_admin'){
-            $data = User::all();
+            $data = DB::table('users')->paginate(10);
             return view('admin.pages.biodata.all_data_santri',['data'=>$data]);
         }
         elseif(Auth::user()->akses == 'sp_admin'){

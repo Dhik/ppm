@@ -84,6 +84,7 @@
               <option value="Universitas Pendidikan Indonesia" {{ $val=="Universitas Pendidikan Indonesia"?'selected':'' }}>Universitas Pendidikan Indonesia</option>
               <option value="Universitas Islam Negeri Sunan Gunung Djati" {{ $val=="Universitas Islam Negeri Sunan Gunung Djati"?'selected':'' }}>Universitas Islam Negeri Sunan Gunung Djati</option>
               <option value="Sekolah Tinggi Farmasi Bandung" {{ $val=="Sekolah Tinggi Farmasi Bandung"?'selected':'' }}>Sekolah Tinggi Farmasi Bandung</option>
+              <option value="Institut Seni Budaya Indonesia" {{ $val=="Institut Seni Budaya Indonesia"?'selected':'' }}>Institut Seni Budaya Indonesia</option>
             </select>
           </div></br>
           <div class="row">

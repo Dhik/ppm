@@ -85,6 +85,7 @@
             </td>
         </tr>
         @endforeach
+        {{ $data->links() }}
     </table>
 
 

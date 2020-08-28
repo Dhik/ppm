@@ -3,7 +3,7 @@
 @section('content')
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(images/login.JPG);">
+				<div class="login100-form-title" style="background-image: url(images/login.jpg);">
 					<span class="login100-form-title-1">
 						Sign In
 					</span>

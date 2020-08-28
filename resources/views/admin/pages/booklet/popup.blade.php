@@ -1,10 +1,11 @@
+@if(Auth::user()->angkatan == '2020')
 <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
+        <i class="fa-4x material-icons">assignment</i>
       </a>
       <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
+        <!-- <li class="header-title"> Sidebar Filters</li>
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
@@ -16,9 +17,9 @@
             </div>
             <div class="clearfix"></div>
           </a>
-        </li>
-        <li class="header-title"></li>
-        <li>
+        </li> -->
+        <!-- <li class="header-title"></li> -->
+        <!-- <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
             <img src="{{ url('assets/img/sidebar-1.jpg') }}" alt="">
           </a>
@@ -37,27 +38,51 @@
           <a class="img-holder switch-trigger" href="javascript:void(0)">
             <img src="{{ url('assets/img/sidebar-4.jpg') }}" alt="">
           </a>
-        </li>
+        </li> -->
         <li class="button-container">
         <div class="sidenav-header-inner text-center">
-            <h2 class="h5">{{ Auth::user()->name }}</h2>
-            <h2 class="sidenav-heading">Kode anda : {{ Auth::user()->kode_mhs }}</h2>
+            <h4>{{ Auth::user()->name }}</h4>
+            <h4>Kode anda : {{ Auth::user()->kode_mhs }}</h4>
             @if(Auth::user()->akses == 'admin')
-            <h6 class="sidenav-heading" style="font-size:10px;">Status: Penerobos</h6>
+            <h6>Status: Penerobos</h6>
             @elseif(Auth::user()->akses == 'sp_admin')
-            <h6 class="sidenav-heading" style="font-size:10px;">Status: Super Admin</h6>
+            <h6>Status: Super Admin</h6>
             @elseif(Auth::user()->akses == 'operator')
-            <h6 class="sidenav-heading" style="font-size:10px;">Status: Santri</h6>
+            <h6>Status: Santri</h6>
             @endif
           </div>
         </li>
-        <!-- <li class="header-title">Want more components?</li>
-            <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                  Get the pro version
-                </a>
-            </li> -->
+        <li class="button-container">
+        @if(Auth::user()->akses != 'sp_admin')
+          @if(Auth::user()->isi_biodata == 'sudah')
+            <a href="{{ route('admin.biodata.datadiri') }}" class="btn btn-primary btn-block">
+              <i class="material-icons">article</i>
+                Biodata
+            </a>
+          @else
+            <a href="{{ route('admin.biodata') }}" class="btn btn-primary btn-block">
+              <i class="material-icons">article</i>
+                Biodata
+            </a>
+          @endif
+        @endif
+          @if(Auth::user()->angkatan == '2020' && Auth::user()->akses == 'operator')
+            <a href="{{ route('admin.booklet.list') }}" class="btn btn-info btn-block">
+              <i class="material-icons">bubble_chart</i>
+                Booklet Metamorph
+            </a>
+          @elseif(Auth::user()->angkatan != '2020' && Auth::user()->akses == 'operator')
+            <a href="{{ route('admin.booklet.proses') }}" class="btn btn-info btn-block">
+              <i class="material-icons">bubble_chart</i>
+                Booklet Metamorph
+            </a>
+          @endif
+          <a href="{{ route('admin.booklet.proses') }}" class="btn btn-warning btn-success">Ada yang mau kenalan</a>
+        </li>
+        <li class="header-title"></li>
+
         </li>
       </ul>
     </div>
   </div>
+  @endif

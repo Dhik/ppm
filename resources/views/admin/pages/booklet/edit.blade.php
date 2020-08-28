@@ -6,7 +6,7 @@
         height:160px; 
     } 
 </style>
-<body class="dark-edition">
+<body class="vmtt-edition">
   <div class="wrapper ">
   @include('admin.pages.booklet.sidebar')
     <div class="main-panel">
@@ -23,20 +23,20 @@
         @endif
       <div class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Kenalan</h4>
-                  <p class="card-category">Amal sholeh lengkapi ya</p>
-                </div>
-                <div class="card-body">
+        <div class="row">
+					<div class="col-md-8">
+						<div class="card text-white bg-card-vmtt">
+							<div class="card-header">
+                <h2 class="text-center title-berkshire tabus-title-color">Perkenalan</h2>
+                <h5 class="text-center montserrat" style="color:white;">Amal sholeh lengkapi ya</h5>
+							</div>
+							<div class="card-body">
                   <form method="post" action="{{ route('admin.booklet.edit',['id'=>$rc->id]) }}">
                   {{ csrf_field() }}
                   <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating" for="iName">Nama Lengkap</label>
+                          <label class="bmd-label-floating" for="iName" style="color:white;">Nama Lengkap</label>
                           <input type="text" name="nama" class="form-control" value="{{ old('nama',$rc->nama) }}" id="iName">
                         </div>
                       </div>
@@ -44,13 +44,13 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating" for="iProdi">Prodi</label>
+                          <label class="bmd-label-floating" for="iProdi" style="color:white;">Prodi</label>
                           <input type="text" name="prodi" class="form-control" value="{{ old('prodi',$rc->prodi) }}" id="iProdi">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating" for="iAngkatan">Angkatan</label>
+                          <label class="bmd-label-floating" for="iAngkatan" style="color:white;">Angkatan</label>
                           <input type="text" name="angkatan" class="form-control" value="{{ old('angkatan',$rc->angkatan) }}" id="iAngkatan">
                         </div>
                       </div>
@@ -58,7 +58,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating" for="iWa">No. Tlp/WhatsApp</label>
+                          <label class="bmd-label-floating" for="iWa" style="color:white;">No. Tlp/WhatsApp</label>
                           <input type="text" name="wa" class="form-control" value="{{ old('wa',$rc->wa) }}" id="iWa">
                         </div>
                       </div>
@@ -66,7 +66,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating" for="iId">Id Line</label>
+                          <label class="bmd-label-floating" for="iId" style="color:white;">Id Line</label>
                           <input type="text" name="id_line" class="form-control" value="{{ old('id_line',$rc->id_line) }}" id="iId">
                         </div>
                       </div>
@@ -74,7 +74,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating" for="iPesan">Pesan</label>
+                          <label class="bmd-label-floating" for="iPesan" style="color:white;">Pesan</label>
                           <input type="text" name="pesan" class="form-control" value="{{ old('pesan',$rc->pesan) }}" id="iPesan">
                         </div>
                       </div>
@@ -83,7 +83,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="form-group">
-                            <label class="bmd-label-floating">Status : {{ $rc->ttd }} kenal </label>
+                            <label class="bmd-label-floating" style="color:white;">Status : {{ $rc->ttd }} kenal </label>
                           </div>
                         </div>
                       </div>
@@ -92,10 +92,10 @@
                     <div class="clearfix"></div>
                   </form>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
+						</div>
+          </div>
+          <div class="col-md-4">
+              <div class="card card-profile bg-card-vmtt">
                 <div class="card-avatar">
                   <a href="#pablo">
                     <img class="img" src="{{ url('/foto/'.$rc->foto) }}" />
@@ -110,7 +110,8 @@
                 </div>
               </div>
             </div>
-          </div>
+				</div>
+          
         </div>
       </div>
       <footer class="footer">

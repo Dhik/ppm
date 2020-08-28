@@ -36,12 +36,22 @@
           <li><a href="{{ url('/facility') }}" style="padding-right:10px;"> Facility </a></li>
           <!-- <li><a href="booking.html">Book Online</a></li> -->
           @if (Route::has('login'))                
-          @auth
-          <li>
-            <a href="{{ route('admin.registrasi') }}" style="padding-right:10px;"> Registrasi </a>
-          </li>
-          @endauth
-          @endif
+                @auth
+                <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('admin.user.setting') }}">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endauth
+                @endif
         </ul>
       </nav>
     </div>
@@ -77,19 +87,33 @@
         </div>
         <ol style="font-size:25px;">
           <li>Seluruh penghuni PPM NH wajib menaati segala tata tertib PPM NH baik yang tertulis maupun tidak tertulis</li>
-          <li>Seluruh penghuni PPM NH diharuskan mengikuti seluruh kegiatan amrin jami’ PPM sesuai dengan waktu yang telah dijadwalkan<li>
+
+          <li>Seluruh penghuni PPM NH diharuskan mengikuti seluruh kegiatan amrin jami’ PPM sesuai dengan waktu yang telah dijadwalkan</li>
+
           <li>Seluruh penghuni PPM NH harus menjaga fatonah, bitonah dan 6 thabiat luhur baik kepada sesama penghuni PPM maupun masyarakat sekitar</li>
+          
           <li>Seluruh penghuni PPM NH dilarang menonton televisi mulai waktu adzan hingga selesai sholat dan pada waktu pengajian berlangsung</li>
+
           <li>Seluruh penghuni PPM NH dilarang melihat, menyimpan dan menyebarkan hal-hal yang berbau porno, menonton film, membaca komik dan bermain game</li>
+
           <li>Seluruh penghuni PPM NH dilarang menyalakan tape, radio, serta komputer dengan suara keras</li>
+
           <li>Seluruh penghuni PPM NH Putra dilarang berambut gondrong dan dilarang mengecat rambut dengan warna apapun serta dilarang mencukur rambut dengan gaya urakan (tidak sopan)</li>
+
           <li>Seluruh penghuni PPM NH dilarang menggunakan barang milik orang lain tanpa seijin pemiliknya</li>
+
           <li>Seluruh penghuni PPM NH dilarang menyimpan atau mengkonsumsi rokok, narkoba dan makanan/ minuman yang memabukkan</li>
+
           <li>Seluruh penghuni PPM NH supaya berpakaian yang rapih dan sopan serta pada waktu sholat dilarang memakai pakaian yang ada gambar atau tulisan di belakangnya</li>
+
           <li>Seluruh penghuni PPM NH Putri (Akhwat) dilarang memasuki kawasan Putra (Ikhwan), begitu pula sebaliknya tanpa seijin pengurus</li>
+
           <li>Seluruh penghuni PPM NH dilarang berkhalwat (nyepi) baik sesama penghuni maupun luar penghuni</li>
+
           <li>Seluruh penghuni PPM NH dilarang ngobrol dengan lawan jenis di atas jam 22.00 WIB</li>
+
           <li>Bagi penghuni PPM yang membawa sepeda motor atau mobil supaya menempatkan kendaraannya dengan tertib, rapi dan terkunci ganda di parkir khusus penghuni (parkir bawah)</li>
+          <li>Bagi santri PPM NH yang membawa kendaraan, baik motor ataupun mobil dilarang menggunakan/memasang knalpot racing (knalpot yang suaranya keras, tidak standar dan mengganggu)</li>
           <li>Bagi penghuni PPM yang membawa atau akan menerima tamu, supaya melapor kepada pengurus</li>
           <li>Seluruh penghuni PPM NH dilarang memiliki atau menyimpan senjata tajam</li>
           <li>Seluruh penghuni PPM NH dilarang menyimpan Al-Quran, Al-Hadits atau buku-buku lainnya di dalam Masjid</li>

@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 Route::get('/booklet',function () {
     return view('booklet');
 });
@@ -56,6 +56,9 @@ Route::get('/bahasa', function () {
 Route::get('/komunikasi', function () {
     return view('profesi/komunikasi');
 });
+
+Route::get('/upload', 'UploadController@upload');
+Route::post('/upload/proses', 'UploadController@proses_upload');
 // Route::get('/add','RegisController@add')->name('add');
 // Route::post('/add','RegisController@save');
 
@@ -70,13 +73,17 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         return view('admin.pages.dashboard');
     })->name('admin.home'); 
 
+    Route::get('/jadwal',function(){
+        return view('admin.pages.jadwal');
+    })->name('admin.jadwal');
+
+    Route::get('/home',function(){
+        return view('home_first');
+    })->name('admin.home_first')
+    ;
     Route::get('/tertib', function () {
         return view('tatatertib');
     })->name('admin.tatatertib');
-
-    Route::get('/registrasi', function () {
-        return view('registrasi');
-    })->name('admin.registrasi');
     
     /* User */
     Route::prefix('user')->group(function(){
@@ -110,11 +117,24 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     });
     /*Booklet*/
     Route::prefix('booklet')->group(function(){
+        Route::get('/','BookletController@daftar')->name('admin.booklet')->middleware('akses.admin');
         Route::get('/list','BookletController@list')->name('admin.booklet.list')->middleware('akses.admin');
+        Route::get('/proses','BookletController@proses')->name('admin.booklet.proses')->middleware('akses.admin');
         Route::get('/edit/{id}','BookletController@edit')->name('admin.booklet.edit')
                 ->middleware('akses.admin');
         Route::post('/edit/{id}','BookletController@update')
                 ->middleware('akses.admin');
+        Route::get('/acc/{id}','BookletController@acc_edit')->name('admin.booklet.acc')
+                ->middleware('akses.admin');
+        Route::post('/acc/{id}','BookletController@acc_update')
+                ->middleware('akses.admin');
+        Route::get('/add','BookletController@add')->name('admin.booklet.add')->middleware('akses.admin');
+        Route::post('/add','BookletController@save')->middleware('akses.admin');
+        Route::get('/facts','BookletController@facts')->name('admin.booklet.facts');
+        Route::get('/tata_busana','BookletController@tata_busana')->name('admin.booklet.tata_busana');
+        Route::get('/vmtt','BookletController@vmtt')->name('admin.booklet.vmtt');
+        Route::get('/eval','BookletController@eval')->name('admin.booklet.eval')->middleware('akses.admin');
+        Route::get('/{id}','BookletController@tampil_daftar')->name('admin.booklet.list_eval')->middleware('akses.admin');
     });
     /*Absen*/
     Route::group(['prefix'=>'absen','middleware'=>'akses.admin:sp_admin'],function(){

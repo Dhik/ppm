@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="{{ url('main/images/download.png') }}">
     <title>@yield('title') PPM Nurul Hakim</title>
     <link rel="icon" type="image/png" href="{{ url('download.png') }}">
     <meta name="description" content="">

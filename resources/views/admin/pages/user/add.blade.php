@@ -70,8 +70,8 @@
                         @elseif(Auth::user()->akses == 'sp_admin')
                         <select class="form-control" name="akses">
                             <option value="" {{ $val==""?'selected':'' }}>Pilih Akses Sebagai : </option>
-                            <option value="admin" {{ $val=="admin"?'selected':'' }}>Santri</option>
-                            <option value="sp_admin" {{ $val=="sp_admin"?'selected':'' }}>Penerobos</option>
+                            <option value="admin" {{ $val=="admin"?'selected':'' }}>Penerobos</option>
+                            <option value="sp_admin" {{ $val=="sp_admin"?'selected':'' }}>Super Admin</option>
                         </select>
                         @endif
                     </div><!-- end form group -->

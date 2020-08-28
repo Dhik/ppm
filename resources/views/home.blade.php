@@ -1,12 +1,13 @@
 @extends('welcome')
 @section('title','Home')
+<link rel="icon" type="image/png" href="{{ url('main/images/download.png') }}">
 <header class="site-navbar py-1" role="banner">
 
       <div class="container">
         <div class="row align-items-center">
           
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><img src="main/images/download.png" alt="logo"><a href="{{ url('/') }}" class="text-black h2 mb-0" style="font-size:20px; padding-left:5px;"> PPM NH</a></h1>
+            <h1 class="mb-0 site-logo"><img src="{{ url('main/images/download.png') }}" alt="logo"><a href="{{ url('/') }}" class="text-black h2 mb-0" style="font-size:20px; padding-left:5px;"> PPM NH</a></h1>
           </div>
           <div class="col-10 col-md-8 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
@@ -34,6 +35,23 @@
                 <li><a href="{{ url('/about') }}" style="padding-right:10px;"> About Us </a></li>
                 
                 <li><a href="{{ url('/facility') }}" style="padding-right:10px;"> Facility </a></li>
+                @if (Route::has('login'))                
+                @auth
+                <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('admin.user.setting') }}">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endauth
+                @endif
               </ul>
             </nav>
           </div>
@@ -61,30 +79,22 @@
     </header>
 @section('content')
 <div class="slide-one-item home-slider owl-carousel">
-      <div class="site-blocks-cover overlay" style="background-image: url(main/images/bg_top_home_1.JPG);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="site-blocks-cover overlay" style="background-image: url(main/images/bg_top_home_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
 
             <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
               <h1 class="text-white font-weight-light">PPM Nurul Hakim</h1>
               <p class="mb-5">Pondok Pesantren Mahasiswa Nurul Hakim</p>
+              @if (Route::has('login'))                
+                @auth
+              <p><a href="{{ route('admin.home') }}" class="btn btn-primary py-3 px-5 text-white">Go to Dashboard</a></p>
+              @endauth
+                @endif
             </div>
           </div>
         </div>
-      </div>  
-
-      <div class="site-blocks-cover overlay" style="background-image: url(main/images/bg_top_home.png);" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-
-            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
-            <h1 class="text-white font-weight-light">PPM Nurul Hakim</h1>
-              <p class="mb-5">Pondok Pesantren Mahasiswa Nurul Hakim</p>
-            </div>
-          </div>
-        </div>
-      </div>  
-
+      </div>   
     </div>
     <div class="site-section bg-light">
       <div class="container">
@@ -98,7 +108,7 @@
     </div>
     <section class="blog-area blog-page section-padding-100">
         <div class="container-fluid">
-              <div class="row">
+            <div class="row">
                 <!-- Single Blog Area -->
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms">
@@ -166,7 +176,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-6 mb-5">
-                <img src="main/images/poeme_2.jpg" alt="Image" class="img-md-fluid">
+                <img src="main/images/poeme_2.JPG" alt="Image" class="img-md-fluid">
               </div>
               <div class="overlap-left col-lg-6 bg-white p-md-5 align-self-center">
                 <p class="text-black lead">Yang satu terlihat sangat muda lainnya, sedikit lebih tua ada si nona bergaun merah merona ada juga si penjual canda.</p>
@@ -179,7 +189,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-6 mb-5">
-                <img src="main/images/poeme_4.jpg" alt="Image" class="img-md-fluid">
+                <img src="main/images/poeme_4.JPG" alt="Image" class="img-md-fluid">
               </div>
               <div class="overlap-left col-lg-6 bg-white p-md-5 align-self-center">
                 <p class="text-black lead">Pada saatnya, ku mengenal mereka semua selalu menyapa saat berjumpa. Terjawab sudah yang sebelumnya ku tanya, mereka adalah .... saudara saling mendukung, saling menjaga, saling mengingatkan ketika lupa.</p>
@@ -192,7 +202,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-6 mb-5">
-                <img src="main/images/poeme_3.jpg" alt="Image" class="img-md-fluid">
+                <img src="main/images/poeme_3.JPG" alt="Image" class="img-md-fluid">
               </div>
               <div class="overlap-left col-lg-6 bg-white p-md-5 align-self-center">
                 <p class="text-black lead">Subhanallah, sejuk nan senang di jiwa memang ini adalah pemberiannya-Nya, kasih sayang terhadap sesama selamanya, saling mencinta.</p>
@@ -252,7 +262,7 @@
           </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
             <a href="#" class="unit-1 text-center">
-              <img src="main/images/IMG_1764.jpg" alt="Image" class="img-fluid">
+              <img src="main/images/11502604604813.jpg" alt="Image" class="img-fluid">
               <div class="unit-1-text">
               </div>
             </a>
@@ -316,94 +326,4 @@
         </div>
       </div>
     </div>  
-
-    <!-- <div class="site-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center">
-            <h2 class="font-weight-light text-black">Our Services</h2>
-            <p class="color-black-opacity-5">We Offer The Following Services</p>
-          </div>
-        </div>
-        <div class="row align-items-stretch">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-airplane"></span></div>
-              <div>
-                <h3>Air Ticketing</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-hotel"></span></div>
-              <div>
-                <h3>Hotel Accomodations</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-sailboat"></span></div>
-              <div>
-                <h3>Sea Explorations</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-            <div class="unit-4 d-flex">
-              <div class="unit-4-icon mr-4"><span class="text-primary flaticon-ski"></span></div>
-              <div>
-                <h3>Ski Experiences</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                <p><a href="#">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div> -->
-
-
-    <!-- <div class="site-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center">
-            <h2 class="font-weight-light text-black">Our Blog</h2>
-            <p class="color-black-opacity-5">See Our Daily News &amp; Updates</p>
-          </div>
-        </div>
-        <div class="row mb-3 align-items-stretch">
-          <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
-            <div class="h-entry">
-              <img src="main/images/hero_bg_1.jpg" alt="Image" class="img-fluid">
-              <h2 class="font-size-regular"><a href="#">How to Plan Your Vacation</a></h2>
-              <div class="meta mb-4">by Theresa Winston <span class="mx-2">&bullet;</span> Jan 18, 2019 at 2:00 pm <span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
-            </div> 
-          </div>
-          <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
-            <div class="h-entry">
-              <img src="main/images/hero_bg_2.jpg" alt="Image" class="img-fluid">
-              <h2 class="font-size-regular"><a href="#">How to Plan Your Vacation</a></h2>
-              <div class="meta mb-4">by Theresa Winston <span class="mx-2">&bullet;</span> Jan 18, 2019 at 2:00 pm <span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center">
-            <a href="#" class="btn btn-outline-primary border-2 py-3 px-5">View All Blog Posts</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
     @endsection

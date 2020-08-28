@@ -34,14 +34,6 @@
           <li><a href="{{ url('/about') }}" style="padding-right:10px;"> About Us </a></li>
           
           <li><a href="{{ url('/facility') }}" style="padding-right:10px;"> Facility </a></li>
-          <!-- <li><a href="booking.html">Book Online</a></li> -->
-          @if (Route::has('login'))                
-          @auth
-          <li>
-            <a href="{{ route('admin.registrasi') }}" style="padding-right:10px;"> Registrasi </a>
-          </li>
-          @endauth
-          @endif
         </ul>
       </nav>
     </div>

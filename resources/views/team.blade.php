@@ -1,5 +1,6 @@
 @extends('welcome')
 @section('title','Team')
+<link rel="icon" type="image/png" href="{{ url('main/images/download.png') }}">
 <header class="site-navbar py-1" role="banner">
 
 <div class="container">
@@ -36,12 +37,22 @@
           <li><a href="{{ url('/facility') }}" style="padding-right:10px;"> Facility </a></li>
           <!-- <li><a href="booking.html">Book Online</a></li> -->
           @if (Route::has('login'))                
-          @auth
-          <li>
-            <a href="{{ route('admin.registrasi') }}" style="padding-right:10px;"> Registrasi </a>
-          </li>
-          @endauth
-          @endif
+                @auth
+                <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('admin.user.setting') }}">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endauth
+                @endif
         </ul>
       </nav>
     </div>
@@ -68,7 +79,7 @@
 
 </header>
 @section('content')
-<div class="site-blocks-cover overlay inner-page-cover" style="background-image: url(main/images/team.jpg); background-attachment: fixed;">
+<div class="site-blocks-cover overlay inner-page-cover" style="background-image: url(main/images/team.png); background-attachment: fixed;">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
@@ -86,7 +97,15 @@
             <p class="color-black-opacity-5">Tim untuk pengembangan kemampuan sesuai prodi yang ditempuh</p>
           </div>
         </div>
-        <div class="row">
+        <div class="card-deck">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <a href="{{ url('/agro') }}" class="unit-1 text-center">
+              <img src="main/images/agro.jpg" alt="Image" class="img-fluid">
+              <div class="unit-1-text">
+                <h3 class="unit-1-heading">Agrokompleks</h3>
+              </div>
+            </a>  
+          </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
             <a href="{{ url('/agro') }}" class="unit-1 text-center">
               <img src="main/images/agro.jpg" alt="Image" class="img-fluid">
@@ -114,6 +133,45 @@
         </div>
       </div>
     </div>
+
+    <div class="site-section">
+      <div class="container">
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="main/images/agro.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Agrokompleks</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
     
     <div class="site-section">
       <div class="container">

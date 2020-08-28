@@ -1,12 +1,12 @@
 @extends('admin.pages.booklet.temp')
-@section('title','Dashboard')
+@section('title','Booklet')
 @section('content')
 <style>  
     img {  
         height:160px; 
     } 
 </style>
-<body class="dark-edition">
+<body class="grey-edition">
   <div class="wrapper ">
   @include('admin.pages.booklet.sidebar')
     <div class="main-panel">

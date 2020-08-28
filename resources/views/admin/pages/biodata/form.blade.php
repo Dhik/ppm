@@ -60,6 +60,7 @@
               <option value="Universitas Pendidikan Indonesia">Universitas Pendidikan Indonesia</option>
               <option value="Universitas Islam Negeri Sunan Gunung Djati">Universitas Islam Negeri Sunan Gunung Djati</option>
               <option value="Sekolah Tinggi Farmasi Bandung">Sekolah Tinggi Farmasi Bandung</option>
+              <option value="Institut Seni Budaya Indonesia">Institut Seni Budaya Indonesia</option>
             </select>
           </div></br>
           <div class="row">

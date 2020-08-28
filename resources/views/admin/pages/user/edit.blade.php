@@ -23,6 +23,10 @@
 
                 <div class="card-body">
                     <div class="form-group form-label-group">
+                        <input type="file" name="foto" id="iFoto" placeholder="Foto">
+                        <label for="iFoto">Change Picture</label>
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
                         <input type="text" name="name" class="form-control {{ $errors->has('name')?'is-invalid':'' }}" value="{{ old('name',$rc->name) }}" id="iName" placeholder="Name" required>
                         <label for="iName">Name</label>
                         @if($errors->has('name'))
@@ -52,6 +56,10 @@
                         @if($errors->has('repassword'))
                         <div class="invalid-feedback">{{ $errors->first('repassword') }}</div>
                         @endif 
+                    </div><!-- end form group -->
+                    <div class="form-group form-label-group">
+                        <input type="text" name="angkatan" class="form-control {{ $errors->has('angkatan')?'is-invalid':'' }}" value="{{ old('angkatan',$rc->angkatan) }}" id="iAngkatan" placeholder="Angkatan" required>
+                        <label for="iAngkatan">Angkatan</label>
                     </div><!-- end form group -->
 
                     <div class="form-group form-label-group">
